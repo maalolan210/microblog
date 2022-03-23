@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+    microblog:
+        container_name: microblog
+        ports:
+            - '8000:5000'
+        environment:
+            - SECRET_KEY=my-secret-key
+            - MAIL_SERVER=smtp.googlemail.com
+            - MAIL_PORT=587
+            - MAIL_USE_TLS=true
+            - MAIL_USERNAME=<your-gmail-username>
+            - MAIL_PASSWORD=<your-gmail-password>
+        build: .
+    mysql-server:
+        container_name: mysql
+        environment:
+            - MYSQL_RANDOM_ROOT_PASSWORD=yes
+            - MYSQL_DATABASE=microblog
+            - MYSQL_USER=microblog
+            - MYSQL_PASSWORD=password
+        image: 'mysql/mysql-server:latest'

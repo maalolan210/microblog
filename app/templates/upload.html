@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>You can upload your avatar here</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
+    
+    {{ form.file }}
+    <input type="submit">
+</form>
+
+{% endblock %}
